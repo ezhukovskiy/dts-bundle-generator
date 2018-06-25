@@ -72,32 +72,30 @@ Options:
   --no-check                    Skip validation of generated d.ts file    [boolean] [default: false]
   --fail-on-class               Fail if generated dts contains class declaration
                                                                           [boolean] [default: false]
-  --external-inlines            Array of the package names from node_modules to inline typings from
-                                it.
-                                Used types will just be inlined into output file             [array]
-  --external-imports            Array of the package names from node_modules to import typings from
-                                it.
-                                Used types will be imported by "import { First, Second } from
+  --external-inlines            Array of package names from node_modules to inline typings from.
+                                Used types will be inlined into the output file              [array]
+  --external-imports            Array of package names from node_modules to import typings from.
+                                Used types will be imported using "import { First, Second } from
                                 'library-name';".
-                                By default all libraries will be imported (except inlined and
-                                libraries from @types)                                       [array]
-  --external-types              Array of the package names from @types to import typings from it via
-                                triple-slash reference directive.
-                                By default all packages are allowed and will be used according their
-                                usages                                                       [array]
-  --umd-module-name             The name of UMD module. If specified `export as namespace
+                                By default all libraries will be imported (except inlined libraries
+                                and libraries from @types)                                   [array]
+  --external-types              Array of package names from @types to import typings from via
+                                the triple-slash reference directive.
+                                By default all packages are allowed and will be used according to
+                                their usages                                                 [array]
+  --umd-module-name             Name of the UMD module. If specified then `export as namespace
                                 ModuleName;` will be emitted                                [string]
-  --project                     The path to a tsconfig.json file that will be used to compile files
+  --project                     Path to the tsconfig.json file that will be used for the compilation
                                                                                             [string]
   --sort                        Sort output nodes                         [boolean] [default: false]
   --inline-declare-global       Enables inlining of `declare global` statements contained in files
                                 which should be inlined (all local files and packages from
                                 `--external-inlines`)                     [boolean] [default: false]
-  --disable-symlinks-following  (EXPERIMENTAL) Disables resolving symlinks to original path. See
-                                https://github.com/timocov/dts-bundle-generator/issues/39 to more
-                                information                               [boolean] [default: false]
-  --config                      File path to generator config file
-  --version                     Show version number                                        [boolean]
+  --disable-symlinks-following  (EXPERIMENTAL) Disables resolving of symlinks to the original path.
+                                See https://github.com/timocov/dts-bundle-generator/issues/39 for
+                                more information                          [boolean] [default: false]
+  --config                      File path to the generator config file
+  --version                     Show the version number                                    [boolean]
 ```
 
 Examples:
@@ -116,7 +114,7 @@ Examples:
 
 ## Why
 
-If you have modules you can create definitions by default via `tsc`, but `tsc` generates them for each module separately. Yeah, you can use `outFile` (for `amd` and `system`) but generated code looks like this:
+If you have modules then you can create definitions by default using `tsc`, but `tsc` generates them for each module separately. Yeah, you can use `outFile` (for `amd` and `system`), but generated code looks like this:
 
 ```ts
 declare module "a" {
